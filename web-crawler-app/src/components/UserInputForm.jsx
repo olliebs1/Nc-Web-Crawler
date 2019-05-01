@@ -1,33 +1,37 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+// import Loading from 'react-loading-bar';
+import 'react-loading-bar/dist/index.css';
 
 export default class UserInputForm extends Component {
-
   state = {
-    url: ''
-  }
+    url: '',
+    show: false,
+  };
 
   handleClick = (event) => {
-    const { changeState } = this.props
-    event.preventDefault()
-    changeState()
-  }
+    const { changeState, getUrl } = this.props;
+    event.preventDefault();
+    // this.setState({ show: true });
+    changeState();
+    getUrl(this.state.url);
+  };
 
   handleChange = (event) => {
-    event.preventDefault()
-    this.setState({ url: event.target.value })
-  }
+    event.preventDefault();
+    this.setState({ url: event.target.value });
+  };
 
   render() {
-
-    console.log(this.state)
+    console.log(this.state);
 
     return (
       <div>
-        <form >
-          Url Input: <input type='text' onChange={this.handleChange}></input>
+        <form>
+          Url Input: <input type="text" onChange={this.handleChange} />
           <button onClick={this.handleClick}>Submit</button>
         </form>
+        {/* {this.state.show && <Loading show={this.state.show} color="red" /> */}
       </div>
-    )
+    );
   }
 }
