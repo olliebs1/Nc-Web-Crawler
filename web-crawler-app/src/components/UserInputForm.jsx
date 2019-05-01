@@ -7,7 +7,9 @@ export default class UserInputForm extends Component {
   }
 
   handleClick = (event) => {
+    const { changeState } = this.props
     event.preventDefault()
+    changeState()
   }
 
   handleChange = (event) => {
