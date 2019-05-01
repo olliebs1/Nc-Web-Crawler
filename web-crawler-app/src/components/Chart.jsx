@@ -1,36 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Pie } from 'react-chartjs-2';
 
-const data = {
-  labels: [
-    'Red',
-    'Green',
-    'Yellow'
-  ],
-  datasets: [{
-    data: [300, 50, 100],
-    backgroundColor: [
-      '#FF6384',
-      '#36A2EB',
-      '#FFCE56'
+const Chart = (props) => {
+
+  const working = props.links.working.length;
+  const notWorking = props.links.notWorking.length;
+
+
+
+  const data = {
+    labels: [
+      'working', 'not working'
     ],
-    hoverBackgroundColor: [
-      '#FF6384',
-      '#36A2EB',
-      '#FFCE56'
-    ]
-  }]
-};
+    datasets: [{
+      data: [working, notWorking],
+      backgroundColor: [
+        '#36A2EB',
+        '#FF6384',
 
-export default class Chart extends Component {
-  // displayName: 'PieExample',
 
-  render() {
-    return (
-      <div>
-        <h2>Pie Example</h2>
-        <Pie data={data} />
-      </div>
-    );
-  }
-};
+      ],
+      hoverBackgroundColor: [
+        '#36A2EB',
+        '#FF6384',
+
+
+      ]
+    }]
+  };
+  return (
+    <div>
+      <h2>Pie Example</h2>
+      <Pie data={data} />
+    </div>
+  );
+}
+
+export default Chart
+
+
+
+
